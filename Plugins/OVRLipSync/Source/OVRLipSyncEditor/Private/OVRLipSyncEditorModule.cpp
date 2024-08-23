@@ -59,7 +59,11 @@ bool DecompressSoundWave(USoundWave *SoundWave)
 	AudioDevice->StopAllSounds(true);
 	auto OriginalDecompressionType = SoundWave->DecompressionType;
 	SoundWave->DecompressionType = DTYPE_Native;
+#if UE_VERSION_OLDER_THAN(5, 4, 0)
 	if (SoundWave->InitAudioResource(AudioDevice->GetRuntimeFormat(SoundWave)))
+#else
+	if (SoundWave->InitAudioResource(SoundWave->GetRuntimeFormat())) // GetRuntimeFormat is deprecated in 4.26
+#endif
 	{
 #if UE_VERSION_OLDER_THAN(4, 22, 0)
 		USoundWave::FAsyncAudioDecompress Decompress(SoundWave);

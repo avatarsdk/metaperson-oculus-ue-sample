@@ -21,11 +21,14 @@
  * limitations under the License.
  ******************************************************************************/
 #include "OVRLipSyncModule.h"
+#include "Misc/EngineVersionComparison.h"
 
 #include "Modules/ModuleManager.h"
 #include "OVRLipSync.h"
 
+#if UE_VERSION_OLDER_THAN(5, 4, 0)
 DEFINE_LOG_CATEGORY(LogOvrLipSync);
+#endif
 
 class FOVRLipSyncModule : public IModuleInterface
 {

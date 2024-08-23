@@ -24,4 +24,4 @@
 #pragma once
 #include "CoreMinimal.h"
 
-OVRLIPSYNC_API DECLARE_LOG_CATEGORY_EXTERN(LogOvrLipSync, Log, All);
+//OVRLIPSYNC_API DECLARE_LOG_CATEGORY_EXTERN(LogOvrLipSync, Log, All);

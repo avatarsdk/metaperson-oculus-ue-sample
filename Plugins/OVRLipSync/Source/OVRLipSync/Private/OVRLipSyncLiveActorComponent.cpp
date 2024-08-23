@@ -26,15 +26,26 @@
 #include "AndroidPermissionCallbackProxy.h"
 #include "AndroidPermissionFunctionLibrary.h"
 #include "OVRLipSyncContextWrapper.h"
-#include "Voice/Public/VoiceModule.h"
+#include "Misc/EngineVersionComparison.h"
 
 #include <Core.h>
+#if UE_VERSION_OLDER_THAN(5, 4, 0)
+#include "Voice/Public/VoiceModule.h"
+#else
+#include "VoiceModule.h"
+#endif
 #include <algorithm>
 
+#if UE_VERSION_OLDER_THAN(5, 4, 0)
 #ifndef DEFAULT_DEVICE_NAME
 #define DEFAULT_DEVICE_NAME TEXT("Default Device")
 #endif
-
+#else 
+DEFINE_LOG_CATEGORY(LogOvrLipSync);
+// This isn't being used anymore in StartVoiceCapture()
+//
+#define DEFAULT_DEVICE_NAME TEXT("")
+#endif
 // Convert OVRLipSyncProviderKind enum to OVRLipSync
 ovrLipSyncContextProvider ContextProviderFromProviderKind(OVRLipSyncProviderKind Kind)
 {

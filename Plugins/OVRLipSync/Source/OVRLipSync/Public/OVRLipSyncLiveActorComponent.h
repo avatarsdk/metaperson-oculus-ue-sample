@@ -23,9 +23,13 @@
 
 #pragma once
 
+#include "Misc/EngineVersionComparison.h"
 #include "OVRLipSyncActorComponentBase.h"
 #include "OVRLipSyncLiveActorComponent.generated.h"
 
+#if UE_VERSION_NEWER_THAN(5, 3, 0)
+DECLARE_LOG_CATEGORY_EXTERN(LogOvrLipSync, Log, All);
+#endif
 class IVoiceCapture;
 class UOVRLipSyncContextWrapper;
 
