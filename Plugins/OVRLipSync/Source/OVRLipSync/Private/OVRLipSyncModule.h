@@ -23,5 +23,8 @@
 
 #pragma once
 #include "CoreMinimal.h"
+#include "Misc/EngineVersionComparison.h"
 
-//OVRLIPSYNC_API DECLARE_LOG_CATEGORY_EXTERN(LogOvrLipSync, Log, All);
+#if UE_VERSION_OLDER_THAN(5, 4, 0)
+OVRLIPSYNC_API DECLARE_LOG_CATEGORY_EXTERN(LogOvrLipSync, Log, All);
+#endif
