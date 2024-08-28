@@ -25,7 +25,27 @@ You need to complete the following steps before experimenting with this sample:
 
 ## How does it work
 
+This demo project includes two plugins: AvatarSDKMetaperson2 for loading and setting up avatars, and OVRLipSync for managing LipSync. The MetapersonLipsyncActor blueprint represents an animated avatar on the scene and has two corresponding Actor Components attached: AvatarSDK and OVRLipsyncPlaybackActor. It also has the Voice audio component for playing the audio asset.
 
+![Actor Components](./Images/components.png)
+
+In the BeginPlay event handler of the mentioned blueprint we set up the "AvatarSDK" actor component by providing the skeletal mesh reference and call the Start method of the "OVRLipsyncPlaybackActor". The Start function in the UOVRLipSyncPlaybackActorComponent class takes two parameters: InAudioComponent and InSequence. The InAudioComponent parameter is of type UAudioComponent and represents the audio component that will be used for LipSync playback. It is responsible for playing the audio associated with the LipSync animation. The InSequence parameter is of type UOVRLipSyncFrameSequence and represents the sequence of LipSync frames that will be played back. It contains information about the viseme scores and laughter score for each frame of the LipSync animation. 
+
+![Avatar Blueprint](./Images/bp1.png)
+
+By passing these parameters to the Start function, we initiate the LipSync playback using the mentioned "Voice" component reference and LipSync frame sequence. To generate the LipSync frame sequence, import your file as Sound Wave asset in editor, click the right mouse button on it, and choose the "Generate LipSync Sequence" option. New Sequence will appear in the content browser.
+
+![How to generate sequence](./Images/seq_gen.png)
+
+In the "On Visemes Ready" event handler of the OVRLipsyncPlaybackActor object we simply call the "AssignVisemesToMorphTargets" method and pass our skeletal mesh reference to it.
+
+![Avatar Blueprint](./Images/bp2.png)
+
+When we press the "L" key or click on the corresponding button, the OnLoadAvatar event is called. 
+
+![Avatar Blueprint](./Images/bp3.png)
+
+In it's handler we simply execute the DownloadAvatar routine and pass the predefined avatar url to it. This method downloads avatar glb file and loads the skeletal mesh from it. After that the new mesh is set to our avatar blueprint and the LipSync animation continues to play.
 
 ## License
 
