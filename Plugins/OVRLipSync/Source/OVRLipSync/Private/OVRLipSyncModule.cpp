@@ -26,7 +26,7 @@
 #include "Modules/ModuleManager.h"
 #include "OVRLipSync.h"
 
-#if UE_VERSION_OLDER_THAN(5, 4, 0)
+#if UE_VERSION_OLDER_THAN(5, 3, 0)
 DEFINE_LOG_CATEGORY(LogOvrLipSync);
 #endif
 

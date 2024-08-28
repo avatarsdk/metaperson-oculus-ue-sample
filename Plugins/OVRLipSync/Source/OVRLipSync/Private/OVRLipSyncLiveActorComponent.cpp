@@ -29,14 +29,16 @@
 #include "Misc/EngineVersionComparison.h"
 
 #include <Core.h>
-#if UE_VERSION_OLDER_THAN(5, 4, 0)
+
+#if UE_VERSION_OLDER_THAN(5, 3, 0)
+#include "OVRLipSyncModule.h"
 #include "Voice/Public/VoiceModule.h"
 #else
 #include "VoiceModule.h"
 #endif
 #include <algorithm>
 
-#if UE_VERSION_OLDER_THAN(5, 4, 0)
+#if UE_VERSION_OLDER_THAN(5, 3, 0)
 #ifndef DEFAULT_DEVICE_NAME
 #define DEFAULT_DEVICE_NAME TEXT("Default Device")
 #endif
