@@ -33,7 +33,7 @@ In the BeginPlay event handler of the mentioned blueprint we set up the `AvatarS
 
 ![Avatar Blueprint](./Images/bp1.png)
 
-By passing these parameters to the Start function, we initiate the LipSync playback using the mentioned `Voice` component reference and LipSync frame sequence. To generate the LipSync frame sequence, import your file as Sound Wave asset in editor, click the right mouse button on it, and choose the `Generate LipSync Sequence` option. New sequence will appear in the content browser.
+By passing these parameters to the Start function, we initiate the LipSync playback using the mentioned `Voice` component reference and LipSync frame sequence. To generate the LipSync frame sequence, import your file as Sound Wave asset in editor and change its `Loading Behavior Override` to `Force Inline`, then click the right mouse button on it, and choose the `Generate LipSync Sequence` option. New sequence will appear in the content browser.
 
 ![How to generate sequence](./Images/seq_gen.png)
 
